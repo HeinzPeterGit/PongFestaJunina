@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
 public class Menu : MonoBehaviour
 {
@@ -26,4 +27,13 @@ public class Menu : MonoBehaviour
         Debug.Log("Sair do jogo");
         Application.Quit();
     }
+    public void OnQuit(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Quit();
+        }
+    }
+
+    
 }

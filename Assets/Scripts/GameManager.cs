@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Users;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +14,14 @@ public class GameManager : MonoBehaviour
     public AudioSource somDoGol;
     public Text TextGameOver;
     public static string vencedor;
+
+    public Transform spawnJogador1;
+    public Transform spawnJogador2;
+
+    public PlayerInputManager playerInputManager;
+
+    private int jogadoresSpawnados = 0;
+    public BallController ballController; // arraste o objeto da bola no Inspector
 
     // Start is called before the first frame update
     void Start()
@@ -56,7 +66,7 @@ public class GameManager : MonoBehaviour
         somDoGol.Play();
 
         // Verificar se qualquer jogador atingiu 10 pontos
-        if (pontuacaoDoJogador1 >= 10)
+        if (pontuacaoDoJogador1 >= 5)
         {
             vencedor = "Jogador 1"; // Definir o vencedor
             textDePontuacao.text = $"{vencedor} Venceu!";
@@ -70,16 +80,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void LoadScene()
-    {
-        SceneManager.LoadScene("SampleScene");
-    }
+   
 
-    private void PausarJogo()
-    {
-        Time.timeScale = 0; // Pausa o jogo
-        Debug.Log("Jogo Pausado. Um jogador atingiu 10 pontos.");
-    }
+   
 
     private void ReiniciarPartida()
     {
@@ -91,5 +94,24 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("Saiu do Jogo");
+    }
+
+    public void OnPlayerJoined(PlayerInput playerInput)
+    {
+        if (playerInput.playerIndex == 0 && spawnJogador1 != null)
+        {
+            playerInput.transform.position = spawnJogador1.position;
+        }
+        else if (playerInput.playerIndex == 1 && spawnJogador2 != null)
+        {
+            playerInput.transform.position = spawnJogador2.position;
+        }
+
+        jogadoresSpawnados++;
+
+        if (jogadoresSpawnados == 2 && ballController != null)
+        {
+            ballController.IniciarMovimento();
+        }
     }
 }

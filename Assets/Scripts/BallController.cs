@@ -17,13 +17,15 @@ public class BallController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Coroutine tristezaCoroutine;
 
+    private bool movimentoLiberado = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         initialVelocity = new Vector2(speed, speed);
         spriteRenderer.sprite = spriteNormal;
-        LaunchBall();
+        rb.velocity = Vector2.zero; 
     }
 
     void LaunchBall()
@@ -31,6 +33,15 @@ public class BallController : MonoBehaviour
         float xDirection = Random.Range(0, 2) == 0 ? -1 : 1;
         float yDirection = Random.Range(0, 2) == 0 ? -1 : 1;
         rb.velocity = new Vector2(xDirection, yDirection) * speed;
+    }
+
+    public void IniciarMovimento()
+    {
+        if (!movimentoLiberado)
+        {
+            movimentoLiberado = true;
+            LaunchBall();
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -43,17 +54,12 @@ public class BallController : MonoBehaviour
         rb.velocity = direction * newSpeed;
 
         if (collision.gameObject.CompareTag("Player1") ||
-            collision.gameObject.CompareTag("Player2") ||
-            collision.gameObject.CompareTag("Teto") ||
-            collision.gameObject.CompareTag("Piso"))
+            collision.gameObject.CompareTag("Player2"))
         {
-            // Se já estiver em uma corrotina de tristeza, para ela
             if (tristezaCoroutine != null)
             {
                 StopCoroutine(tristezaCoroutine);
             }
-
-            // Inicia nova corrotina para ficar triste por 1 segundo
             tristezaCoroutine = StartCoroutine(FicarTristePorUmSegundo());
         }
     }
@@ -67,7 +73,8 @@ public class BallController : MonoBehaviour
 
     void Update()
     {
-        if (Mathf.Abs(transform.position.x) < 0.1f && Mathf.Abs(transform.position.y) < 0.1f)
+        // Só reinicia o movimento se já estiver liberado
+        if (movimentoLiberado && Mathf.Abs(transform.position.x) < 0.1f && Mathf.Abs(transform.position.y) < 0.1f)
         {
             rb.velocity = initialVelocity;
         }
