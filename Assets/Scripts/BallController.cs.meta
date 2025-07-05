@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 141603f1ef3b8aa4788bd05ba986b16c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - SomDaBola: {instanceID: 0}
+  - spriteNormal: {fileID: 21300000, guid: ba4fac8213f29a7489fca9c2f3db2c30, type: 3}
+  - spriteTriste: {fileID: 21300000, guid: 512bea09415589c4c9a7b94674083226, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
