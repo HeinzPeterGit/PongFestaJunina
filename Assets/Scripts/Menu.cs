@@ -34,6 +34,13 @@ public class Menu : MonoBehaviour
             Quit();
         }
     }
+    public void OnStart(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            SceneManager.LoadScene("SampleScene");
+        }
+    }
 
-    
+
 }

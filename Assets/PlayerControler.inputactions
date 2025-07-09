@@ -58,6 +58,17 @@
                 },
                 {
                     "name": "",
+                    "id": "df6c750e-8b57-40c4-9019-690b4b2cc336",
+                    "path": "<HID::ALMEIDS GAMES ALMEIDS GAMES>/stick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "93aa491e-13ec-48f9-ba9c-97b4a07039c2",
                     "path": "<Gamepad>/start",
                     "interactions": "",
@@ -69,8 +80,30 @@
                 },
                 {
                     "name": "",
+                    "id": "b7a3df14-1a40-4430-ad75-ac0fad1d4eda",
+                    "path": "<HID::ALMEIDS GAMES ALMEIDS GAMES>/button10",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "StartGame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "5c1a2273-940e-4f41-8355-cae89aa091e0",
                     "path": "<Gamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "QuitGame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bba2bb66-b1ec-4c7a-ba9f-99f47719413d",
+                    "path": "<HID::ALMEIDS GAMES ALMEIDS GAMES>/button8",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

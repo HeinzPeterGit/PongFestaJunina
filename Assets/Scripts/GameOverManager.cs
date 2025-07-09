@@ -48,6 +48,6 @@ public class GameOverManager : MonoBehaviour
 
     void VoltarAoMenu()
     {
-        SceneManager.LoadScene("MenuPrincipal");
+        SceneManager.LoadScene("Menu");
     }
 }
