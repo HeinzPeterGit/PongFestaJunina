@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
         somDoGol.Play();
 
         // Verificar se qualquer jogador atingiu 10 pontos
-        if (pontuacaoDoJogador1 >= 5)
+        if (pontuacaoDoJogador1 >= 10)
         {
             vencedor = "Jogador 1"; // Definir o vencedor
             textDePontuacao.text = $"{vencedor} Venceu!";
